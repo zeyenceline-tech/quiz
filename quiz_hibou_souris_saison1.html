@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz Hibou et Souris Saison 1</title>
+
+
+<style>
+
+body {
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:#dfe8ff;
+    color:#303b5c;
+    text-align:center;
+}
+
+
+.container {
+    max-width:500px;
+    margin:auto;
+    padding:20px;
+}
+
+
+.card {
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+
+h1 {
+    font-size:28px;
+}
+
+
+#stars {
+    font-size:35px;
+    margin:15px;
+}
+
+
+#question {
+    font-size:22px;
+    min-height:90px;
+}
+
+
+.answer {
+
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:none;
+    border-radius:18px;
+    font-size:18px;
+    background:#c9d8ff;
+    color:#303b5c;
+}
+
+
+#message {
+
+    font-size:20px;
+    font-weight:bold;
+    min-height:40px;
+
+}
+
+
+#progress {
+
+    margin-top:10px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<div class="card">
+
+
+<h1>🦉🐭 Quiz Hibou et Souris<br>Saison 1</h1>
+
+
+<div id="stars">
+☆☆☆☆☆
+</div>
+
+
+<div id="question"></div>
+
+
+<div id="answers"></div>
+
+
+<div id="message"></div>
+
+
+<div id="progress"></div>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+const questions = [
+
+
+{
+question:"Que faisait la petite feuille avant de quitter son arbre ?",
+
+answers:[
+"Elle prenait son temps",
+"Elle cherchait un nid",
+"Elle voulait voler"
+],
+
+correct:0,
+
+explanation:"La feuille choisit de profiter du calme avant de tomber."
+},
+
+
+
+{
+question:"Que regardait la feuille pendant son voyage ?",
+
+answers:[
+"Les étoiles",
+"Les poissons",
+"Les fleurs"
+],
+
+correct:0,
+
+explanation:"Elle contemplait les étoiles et écoutait le vent."
+},
+
+
+
+{
+question:"Pourquoi l'étoile était-elle fatiguée ?",
+
+answers:[
+"Elle brillait depuis très longtemps",
+"Elle avait froid",
+"Elle était tombée du ciel"
+],
+
+correct:0,
+
+explanation:"L'étoile avait oublié comment se reposer."
+},
+
+
+
+{
+question:"Qui aide l'étoile à comprendre qu'elle peut se reposer ?",
+
+answers:[
+"La lune",
+"Le soleil",
+"Un nuage"
+],
+
+correct:0,
+
+explanation:"La lune la rassure avec douceur."
+},
+
+
+
+{
+question:"Que faisait le ruisseau qui chuchotait ?",
+
+answers:[
+"Il souhaitait bonne nuit à la forêt",
+"Il chantait très fort",
+"Il transportait des feuilles"
+],
+
+correct:0,
+
+explanation:"Le ruisseau murmurait de doux messages de bonne nuit."
+},
+
+
+
+{
+question:"Que découvre Souris grâce au ruisseau ?",
+
+answers:[
+"La nuit est remplie de sons doux",
+"Les ruisseaux dorment la nuit",
+"Les pierres parlent"
+],
+
+correct:0,
+
+explanation:"Elle apprend à écouter les petits sons de la nature."
+},
+
+
+
+{
+question:"Pourquoi le nuage décide-t-il de s'arrêter ?",
+
+answers:[
+"Il est fatigué",
+"Il est perdu",
+"Il a peur du noir"
+],
+
+correct:0,
+
+explanation:"Après avoir voyagé toute la journée, il veut se reposer."
+},
+
+
+
+{
+question:"Que découvre le nuage immobile ?",
+
+answers:[
+"Il est bon de ralentir parfois",
+"Il faut toujours avancer",
+"Le vent est dangereux"
+],
+
+correct:0,
+
+explanation:"Il apprend l'importance du repos."
+},
+
+
+{
+question:"Où se trouve la petite lumière réconfortante ?",
+
+answers:[
+"Dans un vieil arbre",
+"Dans une grotte",
+"Sous un pont"
+],
+
+correct:0,
+
+explanation:"La lumière brille au cœur d'un vieil arbre."
+},
+
+
+
+{
+question:"Que représente cette lumière ?",
+
+answers:[
+"Le réconfort et la sécurité",
+"Un trésor caché",
+"Une étoile tombée"
+],
+
+correct:0,
+
+explanation:"Elle rappelle que quelqu'un veille toujours sur nous."
+},
+
+
+
+{
+question:"Que faisait le vent avant de s'endormir ?",
+
+answers:[
+"Il dansait dans la forêt",
+"Il dormait déjà",
+"Il construisait un nid"
+],
+
+correct:0,
+
+explanation:"Il avait passé la journée à souffler entre les arbres."
+},
+
+
+
+{
+question:"Que découvre Souris grâce au vent ?",
+
+answers:[
+"Même la nature a besoin de repos",
+"Le vent ne s'arrête jamais",
+"Les arbres dorment debout"
+],
+
+correct:0,
+
+explanation:"Le repos est important pour tous."
+},
+
+
+
+{
+question:"Que faisait la pierre au bord du sentier ?",
+
+answers:[
+"Elle écoutait le monde",
+"Elle roulait dans la forêt",
+"Elle brillait la nuit"
+],
+
+correct:0,
+
+explanation:"La pierre observait silencieusement son environnement."
+},
+
+
+
+{
+question:"Que découvre Souris grâce à la pierre ?",
+
+answers:[
+"Écouter est parfois suffisant",
+"Il faut toujours parler",
+"Les pierres bougent la nuit"
+],
+
+correct:0,
+
+explanation:"La pleine conscience passe aussi par l'écoute."
+},
+
+
+
+{
+question:"Comment était la luciole de l'histoire ?",
+
+answers:[
+"Discrète et lumineuse",
+"Grande et bruyante",
+"Très rapide"
+],
+
+correct:0,
+
+explanation:"Sa petite lumière apportait du réconfort."
+},
+
+
+
+{
+question:"Que découvre Souris grâce à la luciole ?",
+
+answers:[
+"Même une petite lumière est importante",
+"Les lucioles sont des étoiles",
+"Les lumières doivent être grandes"
+],
+
+correct:0,
+
+explanation:"Chaque petite lumière a sa place dans le monde."
+},
+
+
+
+{
+question:"Que faisait le petit sentier pendant la nuit ?",
+
+answers:[
+"Il se reposait entre les arbres",
+"Il changeait de place",
+"Il disparaissait"
+],
+
+correct:0,
+
+explanation:"Le sentier restait simplement là où il devait être."
+},
+
+
+
+{
+question:"Que garde l'arbre millénaire dans ses branches ?",
+
+answers:[
+"Les souvenirs",
+"Des oiseaux magiques",
+"Des étoiles"
+],
+
+correct:0,
+
+explanation:"Il conserve les traces du temps et des histoires."
+},
+
+
+
+{
+question:"Que comprend Souris grâce à l'arbre ?",
+
+answers:[
+"Les souvenirs restent toujours avec nous",
+"Les arbres parlent",
+"Les feuilles ne tombent jamais"
+],
+
+correct:0,
+
+explanation:"Les moments précieux ne disparaissent jamais vraiment."
+},
+
+
+
+{
+question:"Que fait la pluie qui murmurait ?",
+
+answers:[
+"Elle apporte calme et sérénité",
+"Elle réveille la forêt",
+"Elle cache la lune"
+],
+
+correct:0,
+
+explanation:"Chaque goutte crée une douce mélodie apaisante."
+}
+
+
+];
+let current = 0;
+let score = 0;
+
+
+const questionBox = document.getElementById("question");
+const answersBox = document.getElementById("answers");
+const messageBox = document.getElementById("message");
+const progressBox = document.getElementById("progress");
+const starsBox = document.getElementById("stars");
+
+
+
+function afficherQuestion(){
+
+
+    messageBox.innerHTML = "";
+
+
+    if(current >= questions.length){
+
+
+        document.querySelector(".card").innerHTML = `
+
+
+        <h1>🌙🎉 Bravo !</h1>
+
+
+        <h2>Ton score :</h2>
+
+
+        <div style="font-size:40px">
+        ${"⭐".repeat(score)}
+        </div>
+
+
+        <p>
+        Tu as trouvé ${score} bonnes réponses sur ${questions.length} !
+        </p>
+
+
+        <button class="answer" onclick="location.reload()">
+        🔄 Rejouer
+        </button>
+
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    let q = questions[current];
+
+
+    questionBox.innerHTML = q.question;
+
+
+    progressBox.innerHTML =
+    "Question " + (current + 1) + " / " + questions.length;
+
+
+
+    answersBox.innerHTML = "";
+
+
+
+    q.answers.forEach((answer,index)=>{
+
+
+        let button = document.createElement("button");
+
+
+        button.className="answer";
+
+
+        button.innerHTML = answer;
+
+
+
+        button.onclick=function(){
+
+            verifier(index);
+
+        };
+
+
+
+        answersBox.appendChild(button);
+
+
+    });
+
+
+
+}
+
+
+
+function verifier(index){
+
+
+    let bonne = questions[current].correct;
+
+
+
+    if(index === bonne){
+
+
+        score++;
+
+
+        messageBox.innerHTML =
+        "🌟 Bravo !<br>" + questions[current].explanation;
+
+
+    }
+
+    else{
+
+
+        messageBox.innerHTML =
+        "😊 Presque !<br>" + questions[current].explanation;
+
+
+    }
+
+
+
+    mettreEtoiles();
+
+
+
+    current++;
+
+
+
+    setTimeout(()=>{
+
+
+        afficherQuestion();
+
+
+    },1500);
+
+
+
+}
+
+
+
+function mettreEtoiles(){
+
+
+    let affichage="";
+
+
+    for(let i=0;i<5;i++){
+
+
+        if(i < Math.min(score,5)){
+
+
+            affichage += "⭐";
+
+
+        }
+
+        else{
+
+
+            affichage += "☆";
+
+
+        }
+
+
+    }
+
+
+    starsBox.innerHTML = affichage;
+
+
+}
+
+
+
+afficherQuestion();
+
+
+
+</script>
+
+
+</body>
+
+
+</html>
